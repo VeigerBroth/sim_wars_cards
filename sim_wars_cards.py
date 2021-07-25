@@ -1,14 +1,7 @@
-cards_basic = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jopek', 'Dama', 'Król', 'As']
+cards_basic = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
 
 from random import shuffle
-from time import sleep
 import os
-
-# Shuffle all cards in deck
-def shuffle_cards():
-    cards_all = cards_basic*4
-    shuffle(cards_all)
-    return cards_all
 
 # Return strength of cards
 def cards_str(card_name):
@@ -24,19 +17,19 @@ def add_cards(field, t):
 
 # Generate printed choosen fields of players
 def player_field(field):
-    print(('-'*9+' ')*(len(field)))
+    print(('-'*13+' ')*(len(field)))
 
     for i in range(len(field)):
-        print('-'+field[i].center(7)+'- ', end='')
+        print('-'+field[i].center(11)+'- ', end='')
 
-    print('\n'+('-'+' '*7+'- ')*(len(field)))
-    print(('-'+'Siła:'.center(7)+'- ')*(len(field)))
+    print('\n'+('-'+' '*11+'- ')*(len(field)))
+    print(('-'+'Strenght:'.center(11)+'- ')*(len(field)))
 
     for i in range(len(field)):
-        print('-'+cards_str(field[i]).center(7)+'- ', end='')
+        print('-'+cards_str(field[i]).center(11)+'- ', end='')
 
-    print('\n'+('-'+' '*7+'- ')*(len(field)))
-    print(('-'*9+' ')*(len(field)))
+    print('\n'+('-'+' '*11+'- ')*(len(field)))
+    print(('-'*13+' ')*(len(field)))
     
 
 def clear_terminal():
@@ -47,7 +40,12 @@ def clear_fields():
     field_pOne.clear()
             
 clear_terminal()
-cards_all = shuffle_cards()
+
+# Shuffle cards in deck
+cards_all = []
+cards_all+=cards_basic*4
+shuffle(cards_all)
+
 points_pOne = 0 
 points_pTwo = 0
 card_iteration = 0
